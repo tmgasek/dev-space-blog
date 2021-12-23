@@ -42,7 +42,6 @@ export async function getStaticPaths() {
     });
   }
 
-  console.log(paths);
   return {
     paths,
     fallback: false,
@@ -51,9 +50,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const page = parseInt((params && params.page_index) || 1);
-
-  const files = fs.readdirSync(path.join('posts'));
-
+  // const files = fs.readdirSync(path.join('posts')); //redundant? in original tutorial
   const posts = getPosts();
 
   // get categories for sidebar
@@ -61,7 +58,7 @@ export async function getStaticProps({ params }) {
 
   const uniqueCategories = [...new Set(categories)];
 
-  const numPages = Math.ceil(files.length / POSTS_PER_PAGE);
+  const numPages = Math.ceil(posts.length / POSTS_PER_PAGE); //files.length in original
   const pageIndex = page - 1;
   const orderedPosts = posts.slice(
     pageIndex * POSTS_PER_PAGE,
