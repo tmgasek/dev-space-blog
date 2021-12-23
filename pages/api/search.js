@@ -1,10 +1,6 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
 import { getPosts } from '@/lib/posts';
 
-export default function helloAPI(req, res) {
+export default (req, res) => {
   const query = req.query.q.toLowerCase();
   let posts;
 
@@ -23,4 +19,4 @@ export default function helloAPI(req, res) {
   );
 
   res.status(200).json(JSON.stringify({ results }));
-}
+};
