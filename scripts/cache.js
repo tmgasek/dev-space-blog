@@ -13,11 +13,10 @@ function postData() {
       'utf-8'
     );
 
-    //we destructure the data, save it as const and rename it to frontmatter
     const { data: frontmatter } = matter(markdownWithMeta);
 
     return {
-      slug, //slug: slug
+      slug,
       frontmatter,
     };
   });
@@ -33,5 +32,5 @@ try {
 
 fs.writeFile('cache/data.js', postData(), function (err) {
   if (err) return console.log(err);
-  console.log('post cached...');
+  console.log('Posts Cached...');
 });
