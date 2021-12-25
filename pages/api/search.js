@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 
+//IMPORTANT: this does not work if we import the getPosts() from lib. Unsure why.
+
 export default (req, res) => {
   const query = req.query.q.toLowerCase();
   let posts;
